@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Update - Event Emitter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Event Emitter Dashboard</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="logout.html">Logout</a>
+            <a href="purchase.html">Purchase</a>
+            <a href="profile.html" class="active">Profile Update</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>👤 Profile Update</h1>
+
+        <div class="page-content">
+            <div class="form-section">
+                <h2>Emit Profile Update Event</h2>
+                <div class="form-card">
+                    <div class="form-group">
+                        <label for="updateUsername">Username</label>
+                        <input type="text" id="updateUsername" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="updateField">Field to Update</label>
+                        <input type="text" id="updateField" placeholder="e.g., Email, Password, Phone">
+                    </div>
+                    <button onclick="emitProfileUpdate()" class="submit-btn profile-btn">Update Profile</button>
+                </div>
+            </div>
+
+            <div class="recent-events">
+                <h2>Recent Profile Update Events</h2>
+                <div id="recentLogs" class="log-content"></div>
+            </div>
+        </div>
+
+        <div class="summary-mini">
+            <h3>Total Profile Updates: <span id="updateCount">0</span></h3>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+
+</html>

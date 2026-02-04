@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Emitter Dashboard - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Event Emitter Dashboard</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="login.html">Login</a>
+            <a href="logout.html">Logout</a>
+            <a href="purchase.html">Purchase</a>
+            <a href="profile.html">Profile Update</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>📊 Dashboard Overview</h1>
+
+        <div class="welcome-section">
+            <h2>Welcome to Event Emitter Dashboard</h2>
+            <p>Use the navigation menu to access different event pages:</p>
+            <div class="nav-grid">
+                <a href="login.html" class="nav-card">
+                    <div class="nav-icon">🔐</div>
+                    <h3>User Login</h3>
+                    <p>Emit login events</p>
+                </a>
+                <a href="logout.html" class="nav-card">
+                    <div class="nav-icon">🚪</div>
+                    <h3>User Logout</h3>
+                    <p>Emit logout events</p>
+                </a>
+                <a href="purchase.html" class="nav-card">
+                    <div class="nav-icon">🛒</div>
+                    <h3>User Purchase</h3>
+                    <p>Emit purchase events</p>
+                </a>
+                <a href="profile.html" class="nav-card">
+                    <div class="nav-icon">👤</div>
+                    <h3>Profile Update</h3>
+                    <p>Emit profile update events</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button onclick="refreshSummary()" class="refresh-btn">Refresh Summary</button>
+            <button onclick="clearAll()" class="clear-btn">Clear All</button>
+        </div>
+
+        <!-- Event Summary -->
+        <div class="summary">
+            <h2>Event Summary</h2>
+            <div id="summaryContent" class="summary-content">
+                <div class="stat-card">
+                    <span class="stat-label">User Logins:</span>
+                    <span class="stat-value" id="loginCount">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">User Logouts:</span>
+                    <span class="stat-value" id="logoutCount">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">User Purchases:</span>
+                    <span class="stat-value" id="purchaseCount">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Profile Updates:</span>
+                    <span class="stat-value" id="updateCount">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Logs -->
+        <div class="logs">
+            <h2>Event Logs</h2>
+            <div id="logContent" class="log-content"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

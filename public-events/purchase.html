@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Purchase - Event Emitter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Event Emitter Dashboard</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="logout.html">Logout</a>
+            <a href="purchase.html" class="active">Purchase</a>
+            <a href="profile.html">Profile Update</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>🛒 User Purchase</h1>
+
+        <div class="page-content">
+            <div class="form-section">
+                <h2>Emit Purchase Event</h2>
+                <div class="form-card">
+                    <div class="form-group">
+                        <label for="purchaseUsername">Username</label>
+                        <input type="text" id="purchaseUsername" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="purchaseItem">Item</label>
+                        <input type="text" id="purchaseItem" placeholder="Enter item name">
+                    </div>
+                    <button onclick="emitPurchase()" class="submit-btn purchase-btn">Make Purchase</button>
+                </div>
+            </div>
+
+            <div class="recent-events">
+                <h2>Recent Purchase Events</h2>
+                <div id="recentLogs" class="log-content"></div>
+            </div>
+        </div>
+
+        <div class="summary-mini">
+            <h3>Total Purchases: <span id="purchaseCount">0</span></h3>
+        </div>
+    </div>
+
+    <script src="purchase.js"></script>
+</body>
+
+</html>
