@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div class="header-content">
+                <h1 class="dashboard-title">My Tasks</h1>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="task-manager">
+            <!-- Add Task Section -->
+            <div class="add-task-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        class="task-input" 
+                        placeholder="Add a new task..."
+                    >
+                    <button id="addTaskBtn" class="add-btn">
+                        <span class="plus-icon">+</span> Add Task
+                    </button>
+                </div>
+                <div id="inputError" class="input-error"></div>
+            </div>
+
+            <!-- Tasks List -->
+            <div class="tasks-section">
+                <div id="tasksContainer" class="tasks-list">
+                    <div class="empty-state">
+                        <p class="empty-icon">📝</p>
+                        <p class="empty-text">No tasks yet</p>
+                        <p class="empty-subtitle">Add a task to get started</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Count Footer -->
+        <div class="task-footer">
+            <p id="taskCount">0 tasks</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
