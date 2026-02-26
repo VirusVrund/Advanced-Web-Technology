@@ -7,17 +7,17 @@ const Home = () => {
     return (
         <div className="home-page">
             <section className="hero">
-                <h1>BadmintonPro</h1>
-                <p>Premium Gear for the Modern Athlete. Experience precision, power, and performance with our curated collection of professional badminton equipment.</p>
-                <button className="btn-primary" onClick={() => navigate('/shop')}>
-                    Shop Now
+                <h1>🎬 MovieDB</h1>
+                <p>Discover the greatest movies of all time. Explore ratings, reviews, and build your collection of favorite films from all genres.</p>
+                <button className="btn-primary" onClick={() => navigate('/browse')}>
+                    Browse Movies
                 </button>
             </section>
 
             <section style={{ padding: '4rem 2rem', textAlign: 'center' }}>
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Dominate the Court</h2>
+                <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Your Movie Portal</h2>
                 <p style={{ maxWidth: '800px', margin: '0 auto', color: '#666' }}>
-                    From World-Tour rackets to professional-grade shoes, we provide everything you need to take your game to the next level. Clean, minimal, and focused on performance.
+                    From classic masterpieces to modern blockbusters, explore thousands of films. Rate your favorites, maintain your collection, and discover new cinema. Start building your film library today.
                 </p>
             </section>
         </div>

@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import productsData from '../data/products';
-import ProductCard from '../components/ProductCard';
+import moviesData from '../data/products';
+import MovieCard from '../components/ProductCard';
 
-const Shop = () => {
-    const [products, setProducts] = useState([]);
+const Browse = () => {
+    const [movies, setMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedGenre, setSelectedGenre] = useState('All');
     const searchInputRef = useRef(null);
 
-    // Demonstrate useEffect: Load products on mount
+    // Demonstrate useEffect: Load movies on mount
     useEffect(() => {
         // Simulating a fetch call
-        setProducts(productsData);
+        setMovies(moviesData);
 
         // Demonstrate useRef: Focus search input on mount
         if (searchInputRef.current) {
@@ -20,35 +20,35 @@ const Shop = () => {
     }, []);
 
     // Demonstrate useMemo: Optimize filtering
-    const filteredProducts = useMemo(() => {
-        return products.filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-            const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
-            return matchesSearch && matchesCategory;
+    const filteredMovies = useMemo(() => {
+        return movies.filter(movie => {
+            const matchesSearch = movie.title.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesGenre = selectedGenre === 'All' || movie.genre.toLowerCase().includes(selectedGenre.toLowerCase());
+            return matchesSearch && matchesGenre;
         });
-    }, [products, searchTerm, selectedCategory]);
+    }, [movies, searchTerm, selectedGenre]);
 
-    const categories = ['All', ...new Set(productsData.map(p => p.category))];
+    const genres = ['All', ...new Set(moviesData.flatMap(m => m.genre.split(', ')))];
 
     return (
-        <div className="shop-container">
-            <div className="shop-header">
-                <h1>Our Collection</h1>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div className="browse-container">
+            <div className="browse-header">
+                <h1>🎬 Browse Movies</h1>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
                     <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        value={selectedGenre}
+                        onChange={(e) => setSelectedGenre(e.target.value)}
                         className="search-input"
                         style={{ width: '150px' }}
                     >
-                        {categories.map(cat => (
-                            <option key={cat} value={cat}>{cat}</option>
+                        {genres.map(genre => (
+                            <option key={genre} value={genre}>{genre}</option>
                         ))}
                     </select>
                     <input
                         ref={searchInputRef}
                         type="text"
-                        placeholder="Search products..."
+                        placeholder="Search movies by title..."
                         className="search-input"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
@@ -56,19 +56,19 @@ const Shop = () => {
                 </div>
             </div>
 
-            {filteredProducts.length > 0 ? (
-                <div className="product-grid">
-                    {filteredProducts.map(product => (
-                        <ProductCard key={product.id} product={product} />
+            {filteredMovies.length > 0 ? (
+                <div className="movies-grid">
+                    {filteredMovies.map(movie => (
+                        <MovieCard key={movie.id} movie={movie} />
                     ))}
                 </div>
             ) : (
                 <div style={{ textAlign: 'center', padding: '3rem' }}>
-                    <p>No products found matching your search.</p>
+                    <p>No movies found matching your search.</p>
                 </div>
             )}
         </div>
     );
 };
 
-export default Shop;
+export default Browse;

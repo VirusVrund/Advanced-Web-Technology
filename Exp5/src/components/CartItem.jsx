@@ -1,30 +1,27 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
+import { FavoritesContext } from '../context/CartContext';
 
-const CartItem = ({ item }) => {
-    const { dispatch } = useContext(CartContext);
+const FavoriteItem = ({ movie }) => {
+    const { dispatch } = useContext(FavoritesContext);
 
     return (
-        <div className="cart-item">
-            <img src={item.image} alt={item.name} className="cart-item-img" />
-            <div className="cart-item-details">
-                <h3 className="cart-item-name">{item.name}</h3>
-                <span className="product-cat">{item.category}</span>
-                <p className="product-price">₹{item.price.toLocaleString()}</p>
-                <button className="remove-btn" onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: item.id })}>
-                    Remove
+        <div className="favorite-item">
+            <img src={movie.image} alt={movie.title} className="favorite-item-img" />
+            <div className="favorite-item-details">
+                <h3 className="favorite-item-title">{movie.title}</h3>
+                <span className="favorite-genre">{movie.genre}</span>
+                <p className="favorite-year">🎞️ {movie.year}</p>
+                <p className="favorite-rating">⭐ Rating: {movie.rating}</p>
+                <p className="favorite-description">{movie.description}</p>
+                <button
+                    className="remove-btn"
+                    onClick={() => dispatch({ type: 'REMOVE_FAVORITE', payload: movie.id })}
+                >
+                    ❌ Remove
                 </button>
-            </div>
-            <div className="cart-item-controls">
-                <button className="qty-btn" onClick={() => dispatch({ type: 'DECREASE_QTY', payload: item.id })}>-</button>
-                <span>{item.quantity}</span>
-                <button className="qty-btn" onClick={() => dispatch({ type: 'INCREASE_QTY', payload: item.id })}>+</button>
-            </div>
-            <div className="cart-item-total">
-                <strong>₹{(item.price * item.quantity).toLocaleString()}</strong>
             </div>
         </div>
     );
 };
 
-export default CartItem;
+export default FavoriteItem;

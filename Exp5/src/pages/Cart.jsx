@@ -1,56 +1,51 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
-import CartItem from '../components/CartItem';
+import { FavoritesContext } from '../context/CartContext';
+import FavoriteItem from '../components/CartItem';
 import { useNavigate } from 'react-router-dom';
 
-const Cart = () => {
-    const { cart, totalPrice, dispatch } = useContext(CartContext);
+const Favorites = () => {
+    const { favorites, dispatch } = useContext(FavoritesContext);
     const navigate = useNavigate();
 
-    const handleCheckout = () => {
-        alert('Thank you for your purchase! This is a demo checkout.');
-        dispatch({ type: 'CLEAR_CART' });
-        navigate('/');
-    };
-
-    if (cart.length === 0) {
+    if (favorites.length === 0) {
         return (
-            <div className="cart-container" style={{ textAlign: 'center' }}>
-                <h2 className="cart-title">Your Cart is Empty</h2>
-                <p style={{ marginBottom: '2rem' }}>Looks like you haven't added anything to your cart yet.</p>
-                <button className="btn-primary" onClick={() => navigate('/shop')}>
-                    Go To Shop
+            <div className="favorites-container" style={{ textAlign: 'center' }}>
+                <h2 className="favorites-title">❤️ No Favorites Yet</h2>
+                <p style={{ marginBottom: '2rem' }}>You haven't added any movies to your favorites. Start by browsing our collection!</p>
+                <button className="btn-primary" onClick={() => navigate('/browse')}>
+                    Browse Movies
                 </button>
             </div>
         );
     }
 
     return (
-        <div className="cart-container">
-            <h2 className="cart-title">Your Shopping Cart</h2>
+        <div className="favorites-container">
+            <h2 className="favorites-title">❤️ Your Favorite Movies</h2>
+            <p style={{ color: '#666', marginBottom: '2rem' }}>You have {favorites.length} favorite movie(s)</p>
 
-            <div className="cart-items">
-                {cart.map(item => (
-                    <CartItem key={item.id} item={item} />
+            <div className="favorites-items">
+                {favorites.map(movie => (
+                    <FavoriteItem key={movie.id} movie={movie} />
                 ))}
             </div>
 
-            <div className="cart-summary">
-                <div className="total-row">
-                    <span>Total Amount: </span>
-                    <span>₹{totalPrice.toLocaleString()}</span>
-                </div>
-                <div className="cart-actions">
-                    <button className="clear-btn" onClick={() => dispatch({ type: 'CLEAR_CART' })}>
-                        Clear Cart
-                    </button>
-                    <button className="checkout-btn" onClick={handleCheckout}>
-                        Proceed to Checkout
-                    </button>
-                </div>
+            <div className="favorites-actions">
+                <button
+                    className="clear-btn"
+                    onClick={() => dispatch({ type: 'CLEAR_FAVORITES' })}
+                >
+                    Clear All Favorites
+                </button>
+                <button
+                    className="btn-primary"
+                    onClick={() => navigate('/browse')}
+                >
+                    Add More Movies
+                </button>
             </div>
         </div>
     );
 };
 
-export default Cart;
+export default Favorites;

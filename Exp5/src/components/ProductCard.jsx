@@ -1,26 +1,41 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
+import { FavoritesContext } from '../context/CartContext';
 
-const ProductCard = ({ product }) => {
-    const { dispatch } = useContext(CartContext);
+const MovieCard = ({ movie }) => {
+    const { favorites, dispatch } = useContext(FavoritesContext);
+    const isFavorited = favorites.some(fav => fav.id === movie.id);
 
-    const addToCart = () => {
-        dispatch({ type: 'ADD_ITEM', payload: product });
+    const toggleFavorite = () => {
+        if (isFavorited) {
+            dispatch({ type: 'REMOVE_FAVORITE', payload: movie.id });
+        } else {
+            dispatch({ type: 'ADD_FAVORITE', payload: movie });
+        }
     };
 
     return (
-        <div className="product-card">
-            <img src={product.image} alt={product.name} className="product-image" />
-            <div className="product-info">
-                <span className="product-cat">{product.category}</span>
-                <h3 className="product-name">{product.name}</h3>
-                <p className="product-price">₹{product.price.toLocaleString()}</p>
-                <button className="add-to-cart-btn" onClick={addToCart}>
-                    Add to Cart
+        <div className="movie-card">
+            <div className="movie-image-container">
+                <img src={movie.image} alt={movie.title} className="movie-image" />
+                <button
+                    className={`favorite-btn ${isFavorited ? 'favorited' : ''}`}
+                    onClick={toggleFavorite}
+                    title={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+                >
+                    {isFavorited ? '❤️' : '🤍'}
                 </button>
+            </div>
+            <div className="movie-info">
+                <span className="movie-genre">{movie.genre}</span>
+                <h3 className="movie-title">{movie.title}</h3>
+                <p className="movie-year">{movie.year}</p>
+                <div className="movie-rating">
+                    <span className="rating-value">⭐ {movie.rating}</span>
+                </div>
+                <p className="movie-description">{movie.description}</p>
             </div>
         </div>
     );
 };
 
-export default ProductCard;
+export default MovieCard;

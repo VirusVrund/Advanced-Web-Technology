@@ -1,100 +1,76 @@
-const products = [
+const movies = [
     {
         id: 1,
-        name: "Yonex Arcsaber 11 Pro",
-        price: 15999,
-        image: "https://images.unsplash.com/photo-1626245914652-32b005bd5538?auto=format&fit=crop&q=80&w=800",
-        category: "Rackets",
-        description: "High-end racket for professional players."
+        title: "The Shawshank Redemption",
+        genre: "Drama",
+        rating: 9.3,
+        year: 1994,
+        image: "https://images.unsplash.com/photo-1489599849228-6cac2dabd11f?auto=format&fit=crop&q=80&w=400",
+        description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
     },
     {
         id: 2,
-        name: "Victor Thruster K Ryuga II",
-        price: 13499,
-        image: "https://images.unsplash.com/photo-1613919113166-2990a4269781?auto=format&fit=crop&q=80&w=800",
-        category: "Rackets",
-        description: "Powerful racket used by Lee Zii Jia."
+        title: "The Godfather",
+        genre: "Crime, Drama",
+        rating: 9.2,
+        year: 1972,
+        image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=400",
+        description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son."
     },
     {
         id: 3,
-        name: "Yonex Aerosensa 50",
-        price: 2899,
-        image: "https://images.unsplash.com/photo-1617083277661-827c157fbe62?auto=format&fit=crop&q=80&w=800",
-        category: "Shuttlecocks",
-        description: "Premium goose feather shuttlecocks."
+        title: "The Dark Knight",
+        genre: "Action, Crime, Drama",
+        rating: 9.0,
+        year: 2008,
+        image: "https://images.unsplash.com/photo-1512070679280-1516b5c25f42?auto=format&fit=crop&q=80&w=400",
+        description: "When a menace known as the Joker wreaks havoc on Gotham, Batman must accept one of the greatest tests."
     },
     {
         id: 4,
-        name: "Yonex Power Cushion 65 Z3",
-        price: 10999,
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800",
-        category: "Shoes",
-        description: "Ultimate stability and cushioning."
+        title: "Pulp Fiction",
+        genre: "Crime, Drama",
+        rating: 8.9,
+        year: 1994,
+        image: "https://images.unsplash.com/photo-1533020622174-585a8ff0d4d6?auto=format&fit=crop&q=80&w=400",
+        description: "The lives of two mobsters, a boxer, a gangster and his wife intertwine in four tales of violence and redemption."
     },
     {
         id: 5,
-        name: "Yonex Pro Tournament Bag",
-        price: 6499,
-        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800",
-        category: "Bags",
-        description: "Large capacity bag for all your gear."
+        title: "Forrest Gump",
+        genre: "Drama, Romance",
+        rating: 8.8,
+        year: 1994,
+        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=400",
+        description: "The presidencies of Kennedy and Johnson unfold through the perspective of an Alabama man with an IQ of 75."
     },
     {
         id: 6,
-        name: "Yonex Super Grap (Pack of 3)",
-        price: 599,
-        image: "https://images.unsplash.com/photo-1583416750470-965b2707b355?auto=format&fit=crop&q=80&w=800",
-        category: "Grip Tapes",
-        description: "Tacky and durable overgrip."
+        title: "Inception",
+        genre: "Action, Sci-Fi, Thriller",
+        rating: 8.8,
+        year: 2010,
+        image: "https://images.unsplash.com/photo-1559329007-40790c9c8dd0?auto=format&fit=crop&q=80&w=400",
+        description: "A skilled thief who steals corporate secrets through dream-sharing technology is given the task of planting an idea."
     },
     {
         id: 7,
-        name: "Li-Ning Tectonic 7",
-        price: 12500,
-        image: "https://images.unsplash.com/photo-1626245914717-d5d85210344b?auto=format&fit=crop&q=80&w=800",
-        category: "Rackets",
-        description: "Excellent control and speed."
+        title: "The Matrix",
+        genre: "Action, Sci-Fi",
+        rating: 8.7,
+        year: 1999,
+        image: "https://images.unsplash.com/photo-1478720568477-152d9e3fb3f3?auto=format&fit=crop&q=80&w=400",
+        description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against it."
     },
     {
         id: 8,
-        name: "Mavis 350 Nylon Shuttle",
-        price: 1200,
-        image: "https://images.unsplash.com/photo-1599586120429-48281b6f0ece?auto=format&fit=crop&q=80&w=800",
-        category: "Shuttlecocks",
-        description: "Durable nylon shuttles for practice."
-    },
-    {
-        id: 9,
-        name: "Yonex Performance Tee",
-        price: 2499,
-        image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800",
-        category: "Apparel",
-        description: "Breathable fabric for intense matches."
-    },
-    {
-        id: 10,
-        name: "ASICS Upcourt 5",
-        price: 4999,
-        image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=800",
-        category: "Shoes",
-        description: "Entry-level indoor court shoes."
-    },
-    {
-        id: 11,
-        name: "Yonex Nanoflare 800",
-        price: 14999,
-        image: "https://images.unsplash.com/photo-1617083277254-8e47b3be4430?auto=format&fit=crop&q=80&w=800",
-        category: "Rackets",
-        description: "Lightning-fast head-light racket."
-    },
-    {
-        id: 12,
-        name: "Sports Wristband",
-        price: 399,
-        image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&q=80&w=800",
-        category: "Accessories",
-        description: "Absorbent cotton wristband."
+        title: "Interstellar",
+        genre: "Adventure, Drama, Sci-Fi",
+        rating: 8.6,
+        year: 2014,
+        image: "https://images.unsplash.com/photo-1485095329183-d0797cdc5676?auto=format&fit=crop&q=80&w=400",
+        description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
     }
 ];
 
-export default products;
+export default movies;
