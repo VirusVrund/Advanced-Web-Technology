@@ -1,36 +1,34 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+tasks = []
 
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template(
-        "index.html",
-        sum_result=None,
-        num1="",
-        num2="",
-    )
+    return render_template("index.html", tasks=tasks)
 
 
-@app.route("/calculate-sum", methods=["POST"])
-def calculate_sum():
-    num1 = request.form.get("num1", "").strip()
-    num2 = request.form.get("num2", "").strip()
-    result = None
+@app.route("/add-task", methods=["POST"])
+def add_task():
+    task = request.form.get("task", "").strip()
+    if task:
+        tasks.append({"id": len(tasks), "text": task, "completed": False})
+    return redirect(url_for("index"))
 
-    try:
-        if num1 and num2:
-            result = float(num1) + float(num2)
-    except ValueError:
-        result = "Invalid input"
 
-    return render_template(
-        "index.html",
-        sum_result=result,
-        num1=num1,
-        num2=num2,
-    )
+@app.route("/complete-task/<int:task_id>", methods=["POST"])
+def complete_task(task_id):
+    if 0 <= task_id < len(tasks):
+        tasks[task_id]["completed"] = not tasks[task_id]["completed"]
+    return redirect(url_for("index"))
+
+
+@app.route("/delete-task/<int:task_id>", methods=["POST"])
+def delete_task(task_id):
+    if 0 <= task_id < len(tasks):
+        tasks.pop(task_id)
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

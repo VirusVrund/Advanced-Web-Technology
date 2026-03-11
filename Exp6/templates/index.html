@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Flask App</title>
+    <title>To-Do List App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h1>Simple Flask App</h1>
+    <div class="container">
+        <h1>📝 My To-Do List</h1>
 
-    <h2>Sum Calculator</h2>
-    <form action="{{ url_for('calculate_sum') }}" method="POST">
-        <input type="number" step="any" name="num1" placeholder="First number" value="{{ num1 or '' }}">
-        <input type="number" step="any" name="num2" placeholder="Second number" value="{{ num2 or '' }}">
-        <button type="submit">Add Numbers</button>
-    </form>
+        <form action="{{ url_for('add_task') }}" method="POST" class="add-task-form">
+            <input type="text" name="task" placeholder="Add a new task..." required autocomplete="off">
+            <button type="submit">Add Task</button>
+        </form>
 
-    {% if sum_result is not none %}
-        <p>Result: <strong>{{ sum_result }}</strong></p>
-    {% endif %}
+        <ul class="task-list">
+            {% if tasks %}
+            {% for task in tasks %}
+            <li class="task-item {% if task.completed %}completed{% endif %}">
+                <form action="{{ url_for('complete_task', task_id=task.id) }}" method="POST" class="toggle-form">
+                    <input type="checkbox" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                    <span>{{ task.text }}</span>
+                </form>
+                <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST" class="delete-form">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+            {% else %}
+            <p class="no-tasks">No tasks yet. Add one to get started! 🚀</p>
+            {% endif %}
+        </ul>
+
+        <p class="task-count">Total tasks: {{ tasks|length }}</p>
+    </div>
 </body>
+
 </html>

@@ -1,7 +1,10 @@
-# Simple Flask App (Exp4)
+# To-Do List App (Flask)
 
 ## Functionalities
-1. Sum Calculator
+1. Add new tasks
+2. Mark tasks as complete/incomplete
+3. Delete tasks
+4. View task count
 
 ## Run Steps
 1. Open terminal in this folder.

@@ -1,15 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-input,
-button {
-    margin-top: 6px;
-    margin-right: 6px;
-    padding: 6px;
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
 }
 
-.inline-form {
-    display: inline;
+h1 {
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.add-task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.add-task-form input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.add-task-form input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.add-task-form button {
+    padding: 12px 25px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.add-task-form button:hover {
+    background: #764ba2;
+}
+
+.task-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.task-item:hover {
+    background: #efefef;
+}
+
+.task-item.completed {
+    opacity: 0.6;
+}
+
+.task-item.completed span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.toggle-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.toggle-form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.toggle-form span {
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+    margin: 0;
+}
+
+.delete-btn:hover {
+    background: #ff5252;
+}
+
+.no-tasks {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.task-count {
+    text-align: center;
+    color: #667eea;
+    font-weight: bold;
 }
