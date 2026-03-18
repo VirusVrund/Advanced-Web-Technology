@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Simple Flask App</h1>
+
+    <h2>Sum Calculator</h2>
+    <form action="{{ url_for('calculate_sum') }}" method="POST">
+        <input type="number" step="any" name="num1" placeholder="First number" value="{{ num1 or '' }}">
+        <input type="number" step="any" name="num2" placeholder="Second number" value="{{ num2 or '' }}">
+        <button type="submit">Add Numbers</button>
+    </form>
+
+    {% if sum_result is not none %}
+        <p>Result: <strong>{{ sum_result }}</strong></p>
+    {% endif %}
+</body>
+</html>
